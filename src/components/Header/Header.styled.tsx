@@ -2,12 +2,14 @@ import styled from 'styled-components';
 import '../../../src/App.css';
 
 export const Container = styled.div`
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: var(--z-index-fixed);
-  background-color: var(--body-color);
+  .header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z-index-fixed);
+    background-color: var(--body-color);
+  }
 
   .nav {
     height: calc(var(--header-height) + 1.5rem);
@@ -50,7 +52,7 @@ export const Container = styled.div`
   }
 
   /* For medium devices */
-@media screen and (max-width: 576px) {
+  @media screen and (max-width: 768px) {
     .header {
       top: initial;
       bottom: 0;
@@ -58,28 +60,58 @@ export const Container = styled.div`
 
     .nav {
       height: var(--header-height);
-
     }
 
     .nav__menu {
       position: fixed;
-      bottom: 0;
+      bottom: -100%;
       left: 0;
       width: 100%;
       background-color: var(--body-color);
-      padding: 2rem 1.5rem 4rem ;
+      padding: 2rem 1.5rem 4rem;
       box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
       border-radius: 1.5rem 1.5rem 0 0;
-      transition: .3s;
+      transition: 0.3s;
+    }
+
+    // SHOW MENU
+
+    .show-menu {
+      bottom: 0;
     }
 
     .nav__list {
       display: grid;
-      grid-template-columns: repeat(3, )
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
     }
 
-    .nav__icon, .nav__close, .nav__toggle {
-      display: none;
+    .nav__icon {
+      font-size: 1.2rem;
     }
-}
+
+    .nav__close {
+      position: absolute;
+      right: 1.3rem;
+      bottom: 0.5rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--title-color);
+    }
+
+    .nav__close:hover {
+      color: var(---title-color-dark);
+    }
+
+    .nav__toggle {
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .nav__icon,
+    .nav__close,
+    .nav__toggle {
+      display: block;
+    }
+  }
 `;
